@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
 
-const [cart, setCart] = useState([]);
+const [cart, setCart] = useState([]); //empty array will render on initial only
 const product = [
   { "id": 1, "name": "Dress", "price": 500 },
   { "id": 2, "name": "Jeans", "price": 340 },
@@ -23,9 +23,9 @@ const addToCart = (product) => {
      if (oldProduct) {
       return prevCart.map((item) => 
         item.id === product.id ? 
-      {...item, quantity: item.quantity + 1} : item);
+      {...item, quantity: item.quantity + 1} : item); //will add quantity of items by one 
      }
-     return [...prevCart, {...product, quantity: 1}];
+     return [...prevCart, {...product, quantity: 1}];  //use spread to add prevCat to new returned array
   });
 };
 
@@ -62,10 +62,10 @@ const deleteItem = (productID) => {
            {cart.length === 0 ? (
             <p>Your cart is empty</p> ) : 
             (cart.map((item) => (
-              <div key={item.id} className='cart'>
+              <div key={item.id} className='cart'> //key attribute to uniquely identify this div
                 <h3>{item.name}</h3>
-                <p>Price: {item.price}</p>
-                <button onClick={() => addToCart(item)}> ADD TO CART</button>
+                <p>Price: {item.price}</p> 
+                <button onClick={() => addToCart(item)}> ADD TO CART</button>    
                 <button onClick={() =>  deleteItem(item.id)}> REMOVE</button>
                 </div>
             )))
@@ -77,14 +77,11 @@ const deleteItem = (productID) => {
 
           {cart.length > 0 && (
             <div className='total'>
-              <h3>TOTAL: {totalprice}</h3>
+              <h3>TOTAL: {totalprice}</h3> 
               </div>
           )}
 </div>
-
     );
-     
-     
      }
 
 export default App;
