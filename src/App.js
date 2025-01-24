@@ -62,7 +62,7 @@ const deleteItem = (productID) => {
            {cart.length === 0 ? (
             <p>Your cart is empty</p> ) : 
             (cart.map((item) => (
-              <div key={item.id} className='cart'> //key attribute to uniquely identify this div
+              <div key={item.id} className='cart'> {/*key attribute to uniquely identify this div*/}
                 <h3>{item.name}</h3>
                 <p>Price: {item.price}</p> 
                 <button onClick={() => addToCart(item)}> ADD TO CART</button>    
